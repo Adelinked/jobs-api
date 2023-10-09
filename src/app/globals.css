@@ -3,25 +3,32 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --foreground-rgb: 51, 70, 128;
+  --background-rgb: 246, 247, 251;
+  --black1-rgb: 40, 37, 56;
+  --gray1-rgb: 185, 189, 207;
+  --blue2-rgb: 30, 134, 255;
+  --gray2-rgb: 183, 188, 206;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+    --foreground-rgb: 246, 247, 251;
+    --background-rgb: 51, 70, 128;
+    --black1-rgb: 215, 218, 199;
+    --gray1-rgb: 70, 66, 48;
+    --blue2-rgb: 225, 121, 0;
+    --gray2-rgb: 72, 67, 49;
   }
 }
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  background: rgb(var(--background-rgb));
+  font-family: var(--font-poppins);
+  line-height: normal;
+}
+
+.roboto-font {
+  font-family: var(--font-roboto);
 }
