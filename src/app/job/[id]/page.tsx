@@ -53,7 +53,7 @@ export default function JobPage({ params }: { params: { id: string } }) {
             <div className="flex flex-col md:flex-row gap-6 mb-[10px]">
               {" "}
               <h1 className="text-2xl font-bold">{title}</h1>
-              <span className="w-[70px] px-2 py-[6px] font-bold text-xs border-[1px] border-blue1 rounded-[4px] mb-6 lg:mb-0">
+              <span className="flex justify-center items-center w-[70px] px-2 py-[6px] font-bold text-xs border-[1px] border-blue1 rounded-[4px] mb-6 lg:mb-0">
                 {type}
               </span>
             </div>
@@ -62,7 +62,7 @@ export default function JobPage({ params }: { params: { id: string } }) {
               <span>{formattedPostedDate}</span>
             </div>
             <div className="flex gap-3 mb-8">
-              <div className="w-[42px] h-[42px] relative mt-1">
+              <div className="min-w-[42px] min-h-[42px] relative mt-1">
                 <ImageWithFallback
                   src={`/${company}.png`}
                   alt={company}

@@ -7,10 +7,10 @@ import { Footer } from "./_components/footer";
 import { jobType, useJobsStore } from "./store";
 import { StoreInitializer } from "./_components/storeInitializer";
 import { headers } from "next/headers";
-
+import initialJobs from "@/data/jobs.json";
 export default async function Home() {
-  const initialJobs = await fetch(
-    `${process.env.NEXT_PUBLIC_BASE_URL ?? "http://localhost:3000"}/api/jobs`,
+  /*  const initialJobs = await fetch(
+    `${process.env.NEXT_PUBLIC_BASE_URL}/api/jobs`,
     {
       method: "GET",
       headers: headers(),
@@ -18,7 +18,7 @@ export default async function Home() {
   )
     .then((res) => res.json())
     .then((data) => data.filter((job: jobType) => job.type === "Full time"));
-
+*/
   useJobsStore.setState({
     jobs: initialJobs,
   });
