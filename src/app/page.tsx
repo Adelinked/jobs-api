@@ -9,16 +9,12 @@ import { StoreInitializer } from "./_components/storeInitializer";
 import { headers } from "next/headers";
 import initialJobs from "@/data/jobs.json";
 export default async function Home() {
-  /*  const initialJobs = await fetch(
-    `${process.env.NEXT_PUBLIC_BASE_URL}/api/jobs`,
-    {
-      method: "GET",
-      headers: headers(),
-    }
+  const initialJobs = await fetch(
+    `${process.env.NEXT_PUBLIC_BASE_URL}/api/jobs`
   )
     .then((res) => res.json())
     .then((data) => data.filter((job: jobType) => job.type === "Full time"));
-*/
+
   useJobsStore.setState({
     jobs: initialJobs,
   });

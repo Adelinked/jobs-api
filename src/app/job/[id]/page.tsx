@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { HiOutlineArrowNarrowLeft } from "react-icons/hi";
-import jobs from "@/data/jobs.json";
 import { splitTextByEmailAddress } from "@/app/utils";
 import { jobType } from "@/app/store";
 import { formatDistanceToNow } from "date-fns";
@@ -9,9 +8,11 @@ import { ImEarth } from "react-icons/im";
 import { Footer } from "@/app/_components/footer";
 import { ImageWithFallback } from "@/app/_components/imageWithFallback";
 
-export default function JobPage({ params }: { params: { id: string } }) {
+export default async function JobPage({ params }: { params: { id: string } }) {
   const { id } = params;
-  const job: jobType = jobs.find((job) => job.id === Number(id))!;
+  const job = await fetch(
+    `${process.env.NEXT_PUBLIC_BASE_URL}/api/jobs?id=${id}`
+  ).then((res) => res.json());
   const { title, location, company, type, posted, how_to_apply, description } =
     job;
   const parts = splitTextByEmailAddress(how_to_apply);
@@ -53,7 +54,7 @@ export default function JobPage({ params }: { params: { id: string } }) {
             <div className="flex flex-col md:flex-row gap-6 mb-[10px]">
               {" "}
               <h1 className="text-2xl font-bold">{title}</h1>
-              <span className="flex justify-center items-center w-[70px] px-2 py-[6px] font-bold text-xs border-[1px] border-blue1 rounded-[4px] mb-6 lg:mb-0">
+              <span className="flex justify-center items-center px-2 py-[6px] font-bold text-xs border-[1px] border-blue1 rounded-[4px] mb-6 lg:mb-0">
                 {type}
               </span>
             </div>
@@ -80,7 +81,7 @@ export default function JobPage({ params }: { params: { id: string } }) {
               </div>
             </div>
             <p className="leading-6 mb-8">
-              {descriptionLines.map((line, index) => (
+              {descriptionLines.map((line: string, index: number) => (
                 <span key={index}>
                   {line}
                   {index < descriptionLines.length - 1 && (
