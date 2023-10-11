@@ -1,26 +1,9 @@
 import "./globals.css";
 import type { Metadata } from "next";
-import { Poppins, Roboto } from "next/font/google";
-
-const poppins = Poppins({
-  subsets: ["latin"],
-  weight: ["300", "500", "700"],
-  display: "swap",
-  preload: true,
-  variable: "--font-poppins",
-});
-
-const roboto = Roboto({
-  subsets: ["latin"],
-  weight: ["400", "500", "700"],
-  display: "swap",
-  preload: true,
-  variable: "--font-roboto",
-});
 
 export const metadata: Metadata = {
-  title: "Adelinked Jobs",
-  description: "Adelinked Jobs challenge unsing Next.js",
+  title: "Adelinked Jobs API",
+  description: "Adelinked Jobs API",
 };
 
 export default function RootLayout({
@@ -29,7 +12,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${poppins.variable} ${roboto.variable}`}>
+    <html lang="en">
+      <link rel="icon" href="/devchallenges.png" sizes="any" />
+
       <body>{children}</body>
     </html>
   );
